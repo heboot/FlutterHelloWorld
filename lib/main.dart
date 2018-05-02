@@ -40,14 +40,18 @@ class RandomWordsState extends State<RandomWords> {
     return new Scaffold(
       appBar: new AppBar(
         title: new Text('Startup Name Generator'),
+        //既然是数组，肯定可以放多个
         actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.arrow_back), onPressed: _pushSaved)
+          new IconButton(
+              icon: new Icon(Icons.arrow_back), onPressed: _pushSaved),
+          new IconButton(icon: new Icon(Icons.menu), onPressed: _pushSaved),
         ],
       ),
       body: _buildSuggestions(),
     );
   }
 
+  //右上角按钮点击事件
   void _pushSaved() {
     Navigator.of(context).push(
       new MaterialPageRoute(
@@ -56,7 +60,7 @@ class RandomWordsState extends State<RandomWords> {
             (pair) {
               return new ListTile(
                 title: new Text(
-                  pair.asPascalCase,//则句话代表Text的文本，如果我换成固定的字符串也是可以通过的
+                  pair.asPascalCase, //则句话代表Text的文本，如果我换成固定的字符串也是可以通过的
                   style: _biggerFont,
                 ),
               );
