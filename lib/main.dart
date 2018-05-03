@@ -4,6 +4,33 @@ import 'package:english_words/english_words.dart';
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    Widget index = new Container(
+      padding: const EdgeInsets.all(32.0),
+      child: new Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          new Container(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: new Text(
+              'welcome noonde',
+              style: new TextStyle(
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+          ),
+          new Text(
+            'Kandersteg, Switzerland',
+            style: new TextStyle(
+              color: Colors.grey[500],
+            ),
+          ),
+        ],
+      ),
+    );
+    return index;
+  }
 //  @override
 //  Widget build(BuildContext context) {
 ////    final wordPair = new WordPair.random();
@@ -19,13 +46,15 @@ class MyApp extends StatelessWidget {
 //      ),
 //    );
 //  }
-  @override
-  Widget build(BuildContext context) {
-    return new MaterialApp(
-      title: 'Startup Name Generator',
-      home: new RandomWords(),
-    );
-  }
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return new MaterialApp(
+//      title: 'Startup Name Generator',
+//      home: new RandomWords(),
+//    );
+//  }
+
 }
 
 class RandomWordsState extends State<RandomWords> {
