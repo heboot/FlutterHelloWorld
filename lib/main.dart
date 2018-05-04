@@ -7,26 +7,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Widget index = new Container(
-      padding: const EdgeInsets.all(32.0),
-      child: new Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          new Container(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: new Text(
-              'welcome noonde',
-              style: new TextStyle(
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          new Text(
-            'Kandersteg, Switzerland',
-            style: new TextStyle(
-              color: Colors.grey[500],
-            ),
-          ),
-        ],
+      padding: const EdgeInsets.only(bottom: 8.0),
+      color: Colors.red,
+      child: new Center(
+        child: new Text("hehe"),
       ),
     );
     return index;
