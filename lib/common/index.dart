@@ -9,9 +9,6 @@ class IndexPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return new MaterialApp(
       home: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Welcome to Flutter'),
-        ),
         body: new Center(
           child: new Text(
             'index',
