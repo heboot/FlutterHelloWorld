@@ -1,20 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:english_words/english_words.dart';
+import 'package:helloworld/common/loading.dart';
+import 'dart:async';
+import 'package:helloworld/common/index.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    Widget index = new Container(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      color: Colors.red,
-      child: new Center(
-        child: new Text("hehe"),
-      ),
-    );
-    return index;
+    return new LoadingEvent();
+//    return new LoadingPage();
   }
+
+//  @override
+//  Widget build(BuildContext context) {
+//    return new Center(
+//      child: new Text(
+//        'Hello, world!',
+//        textDirection: TextDirection.ltr,
+//      ),
+//    );
+//  }
 //  @override
 //  Widget build(BuildContext context) {
 ////    final wordPair = new WordPair.random();
@@ -144,4 +151,59 @@ class RandomWordsState extends State<RandomWords> {
 class RandomWords extends StatefulWidget {
   @override
   createState() => new RandomWordsState();
+}
+
+class LoadingEvent extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new CountDownState();
+  }
+}
+
+class CountDownState extends State {
+  var _count = 0;
+
+  var mContext;
+
+  @override
+  Widget build(BuildContext context) {
+    mContext = context;
+    _test();
+    return new MaterialApp(
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: new Text('Welcome to Flutter'),
+        ),
+        body: new Center(
+          child: new Text(
+            'Hello, world!',
+            textDirection: TextDirection.ltr,
+          ),
+        ),
+      ),
+      routes: <String, WidgetBuilder>{
+        '/index': (BuildContext context) => new IndexPage("from loading"),
+      },
+    );
+  }
+
+  void _test() {
+    const oneSec = const Duration(seconds: 1);
+    new Timer.periodic(oneSec, (Timer t) => _doNav(t));
+  }
+
+  void _doNav(Timer t) {
+    print('hi! $_count');
+    _count = _count + 1;
+    if (_count >= 3) {
+      t.cancel();
+      toInDex();
+    }
+  }
+
+  void toInDex() {
+    Navigator.of(mContext).push(new MaterialPageRoute(
+        builder: (BuildContext context) => new IndexPage("from main page")));
+//    Navigator.of(mContext).pushNamed('/index');
+  }
 }
