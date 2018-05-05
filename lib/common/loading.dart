@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:helloworld/common/index.dart';
+import 'package:helloworld/common/test.dart';
 
 class LoadingPage extends StatelessWidget {
   @override
@@ -43,8 +44,8 @@ class LoadingEvent extends StatelessWidget {
   }
 
   void toInDex() {
-    Navigator.of(mContext).push(new MaterialPageRoute(
-        builder: (BuildContext context) => new IndexPage("from loading page")));
+    Navigator.of(mContext).push(
+        new MaterialPageRoute(builder: (BuildContext context) => new MyTest()));
 //    Navigator.of(mContext).pop(mContext);
   }
 }
