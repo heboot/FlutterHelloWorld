@@ -44,8 +44,8 @@ class LoadingEvent extends StatelessWidget {
   }
 
   void toInDex() {
-    Navigator.of(mContext).push(
-        new MaterialPageRoute(builder: (BuildContext context) => new MyTest()));
+    Navigator.of(mContext).push(new MaterialPageRoute(
+        builder: (BuildContext context) => new IndexPage("from loading")));
 //    Navigator.of(mContext).pop(mContext);
   }
 }

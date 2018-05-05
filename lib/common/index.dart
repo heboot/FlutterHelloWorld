@@ -11,8 +11,10 @@ class IndexPage extends StatelessWidget {
       home: new Scaffold(
         body: new Container(
           color: Colors.white,
-          padding: const EdgeInsets.all(32.0),
+//          padding: const EdgeInsets.all(32.0),
+          alignment: Alignment.center,
           child: new Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
               new LogoView(),
               new EditTextView(),
@@ -49,20 +51,25 @@ class LogoView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      child: new Expanded(
+        margin: EdgeInsets.only(top: 182.0),
         child: new Column(
           children: <Widget>[
             new Text(
-              "Noonde Title",
+              "noonde",
+              style: new TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 40.0,
+              ),
+            ),
+            new Text(
+              "noonde.com",
               style: new TextStyle(
                 fontWeight: FontWeight.bold,
                 fontSize: 20.0,
               ),
             ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
 
@@ -77,8 +84,9 @@ class EditTextViewState extends State {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      padding: const EdgeInsets.all(10.0),
+      margin: EdgeInsets.only(top: 52.0,left: 40.0,right: 40.0),
       child: new TextField(
+        decoration: new InputDecoration(hintText: "plase input tokyo"),
         enabled: true,
       ),
     );
