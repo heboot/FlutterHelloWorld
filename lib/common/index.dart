@@ -18,27 +18,6 @@ class IndexPage extends StatelessWidget {
             children: <Widget>[
               new LogoView(),
               new EditTextView(),
-//          new Expanded(
-//              child: new Column(
-//            crossAxisAlignment: CrossAxisAlignment.start,
-//            children: <Widget>[
-//              new Container(
-//                padding: const EdgeInsets.only(bottom: 8.0),
-//                child: new Text(
-//                  'Oeschinen Lake Campground',
-//                  style: new TextStyle(
-//                    fontWeight: FontWeight.bold,
-//                  ),
-//                ),
-//              ),
-//              new Text(
-//                'Kandersteg, Switzerland',
-//                style: new TextStyle(
-//                  color: Colors.grey[500],
-//                ),
-//              ),
-//            ],
-//          )),
             ],
           ),
         ),
@@ -84,7 +63,7 @@ class EditTextViewState extends State {
   @override
   Widget build(BuildContext context) {
     return new Container(
-      margin: EdgeInsets.only(top: 52.0,left: 40.0,right: 40.0),
+      margin: EdgeInsets.only(top: 52.0, left: 40.0, right: 40.0),
       child: new TextField(
         decoration: new InputDecoration(hintText: "plase input tokyo"),
         enabled: true,
