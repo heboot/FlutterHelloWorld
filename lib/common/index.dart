@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 
 class IndexPage extends StatelessWidget {
   IndexPage(String str) {
@@ -8,6 +9,14 @@ class IndexPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en','US'),
+        const Locale('cn','ZH'),
+      ],
       home: new Scaffold(
         body: new Container(
           color: Colors.white,
@@ -65,7 +74,7 @@ class EditTextViewState extends State {
     return new Container(
       margin: EdgeInsets.only(top: 52.0, left: 40.0, right: 40.0),
       child: new TextField(
-        decoration: new InputDecoration(hintText: "plase input tokyo"),
+        decoration: new InputDecoration(hintText: "Try to search Tokyo"),
         enabled: true,
       ),
     );
