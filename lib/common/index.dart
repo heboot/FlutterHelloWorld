@@ -8,14 +8,21 @@ class IndexPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Locale myLocale = Localizations.localeOf(context);
+
+    print(myLocale);
+
     return MaterialApp(
       localizationsDelegates: [
+        //基于WidgetsApp的应用程序类似，只是不需要GlobalMaterialLocalizations.delegate。
+        //GlobalMaterialLocalizations.delegate 为Material Components库提供了本地化的字符串和其他值。
         GlobalMaterialLocalizations.delegate,
+        //GlobalWidgetsLocalizations.delegate定义widget默认的文本方向，从左到右或从右到左。
         GlobalWidgetsLocalizations.delegate,
       ],
       supportedLocales: [
-        const Locale('en','US'),
-        const Locale('cn','ZH'),
+        const Locale('en', 'US'),
+        const Locale('he', 'IL'),
       ],
       home: new Scaffold(
         body: new Container(
@@ -69,14 +76,46 @@ class EditTextView extends StatefulWidget {
 }
 
 class EditTextViewState extends State {
+  String inputText = "";
+
   @override
   Widget build(BuildContext context) {
+
+    Widget titleSection = new Container(
+
+        child: new Container(
+          width: 500.0,
+          color: Colors.red,
+          margin: EdgeInsets.only(top: 5.0),
+          child: new Text(inputText),
+        ));
+
     return new Container(
       margin: EdgeInsets.only(top: 52.0, left: 40.0, right: 40.0),
-      child: new TextField(
-        decoration: new InputDecoration(hintText: "Try to search Tokyo"),
-        enabled: true,
+      child: new Column(
+        children: <Widget>[
+          new TextField(
+            decoration: new InputDecoration(hintText: "Try to search Tokyo"),
+            enabled: true,
+            onChanged: (String s) => _showTextTip(s),
+          ),
+//          titleSection
+          new ListView(
+
+          )
+        ],
       ),
+//      child: new TextField(
+//        decoration: new InputDecoration(hintText: "Try to search Tokyo"),
+//        enabled: true,
+//        onChanged:(String s) => _showTextTip(s),
+//      ),
     );
+  }
+
+  void _showTextTip(String s) {
+    setState(() {
+      inputText = s;
+    });
   }
 }
