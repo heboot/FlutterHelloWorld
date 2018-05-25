@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:helloworld/data/SearchBean.dart';
+import 'package:helloworld/utils/DateUtils.dart';
 
 class RoomListPage extends StatelessWidget {
+  SearchBean searchBean;
 
-  RoomListPage(String str) {
+  DateUtils dateUtils;
 
+  RoomListPage(SearchBean s) {
+    print(s.city);
+    searchBean = s;
+    dateUtils = new DateUtils();
   }
 
   @override
@@ -27,7 +34,7 @@ class RoomListPage extends StatelessWidget {
       ],
       home: new Scaffold(
         appBar: new AppBar(
-          title: ,
+          title: new Text(searchBean.city),
         ),
         body: new Container(
           color: Colors.white,
@@ -36,7 +43,33 @@ class RoomListPage extends StatelessWidget {
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-
+              new Container(
+                margin: const EdgeInsets.only(top: 10.0, left: 20.0),
+                child: new Row(
+                  children: <Widget>[
+                    new GestureDetector(
+                      onTap: () {
+                        print("showDate...");
+                        showDatePicker(context: context, initialDate: dateUtils.getNowDateTimeAddDays(1), firstDate: dateUtils.getNowDateTimeAddDays(0), lastDate: dateUtils.getNowDateTimeAddDays(2));
+                      },
+                      child: new Row(
+                        children: <Widget>[
+                          new Container(
+                            margin: const EdgeInsets.only(
+                              right: 10.0,
+                            ),
+                            child:
+                                new Icon(Icons.date_range, color: Colors.red),
+                          ),
+                          new Text(dateUtils.formatDate2YY_MM_DD() +
+                              " -- " +
+                              dateUtils.formatDate2YY_MM_DDByNextDay(1))
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              )
             ],
           ),
         ),

@@ -3,12 +3,9 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:helloworld/room/room_list.dart';
 import 'package:helloworld/data/SearchBean.dart';
 
-class IndexPage extends StatelessWiedget {
 
-  IndexPage(SearchBean search) {
-
-
-  }
+class IndexPage extends StatelessWidget {
+  IndexPage(String search) {}
 
   @override
   Widget build(BuildContext context) {
@@ -83,9 +80,10 @@ class EditTextViewState extends State {
   Widget build(BuildContext context) {
     Widget titleSection = new GestureDetector(
       onTap: () {
+        SearchBean searchBean = new SearchBean("keyword", "beijing");
         Navigator.of(context).push(new MaterialPageRoute(
             builder: (BuildContext context) =>
-                new RoomListPage("from loading")));
+                new RoomListPage(searchBean)));
       },
       child: new Container(
           child: new Container(
